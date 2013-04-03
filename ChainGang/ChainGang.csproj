@@ -40,10 +40,14 @@
     <Compile Include="Internal\ImmutableStackOfT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolution\CompositeResolver.cs" />
+    <Compile Include="Resolution\FactoryDelegates.cs" />
     <Compile Include="Resolution\IDependencyResolver.cs" />
     <Compile Include="Resolution\IDependencyResolverExtensions.cs" />
+    <Compile Include="Resolution\IDependencyScope.cs" />
+    <Compile Include="Resolution\IDependencyScopeExtensions.cs" />
+    <Compile Include="Resolution\LazyDependencyResolver.cs" />
     <Compile Include="Resolution\ResolverChain.cs" />
-    <Compile Include="Resolution\DependencyResolver.cs" />
+    <Compile Include="Resolution\RootDependencyResolver.cs" />
     <Compile Include="Resolution\SingletonDependencyResolver.cs" />
     <Compile Include="Resolution\TransientDependencyResolver.cs" />
   </ItemGroup>
