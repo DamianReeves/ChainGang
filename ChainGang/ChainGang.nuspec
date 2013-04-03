@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+		<id>ChainGang</id>
+		<version>$version$</version>
+		<authors>Damian Reeves</authors>
+		<owners>Damian Reeves</owners>
+		<licenseUrl>https://github.com/DamianReeves/ChainGang/wiki/License</licenseUrl>
+		<projectUrl>https://github.com/DamianReeves/ChainGang</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>A simple portable framework which implements the chain of responsibility pattern for service location and handler chains.</description>
+		<tags>chain dependencyresolver chainofresponsibility</tags>
+	</metadata>
+	<files>
+		<file src="..\README.md" target="Readme.md" />
+		<file src="..\Tools\**\*.*" target="tools" exclude="nuget.exe" />
+	</files>
+</package>
