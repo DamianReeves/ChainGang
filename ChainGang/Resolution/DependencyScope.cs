@@ -1,12 +1,14 @@
 using System;
 using ChainGang.Internal.Disposables;
+using ChainGang.Properties;
 
 namespace ChainGang.Resolution
 {
-    public class DependencyScope : IDependencyScope, ICancelable
+    public class DependencyScope : IDependencyScope, IExtendableDependencyScope, ICancelable
     {
         private CompositeDisposable _scopeHandles = new CompositeDisposable();
         private readonly CompositeResolver<ResolverChain,ResolverChain> _resolvers;
+        private bool _isLocked;
 
         public DependencyScope() : this(null, new ResolverChain(), new ResolverChain(), new RootDependencyResolver())
         {            
@@ -26,9 +28,12 @@ namespace ChainGang.Resolution
         {
         }
 
-        public DependencyScope(object tag, IDependencyResolver resolver)
+        public DependencyScope(object tag, IDependencyResolver resolver) : this(tag, new ResolverChain(), new ResolverChain(), new RootDependencyResolver())
         {
-            
+            if (resolver != null)
+            {
+                AddResolver(resolver, true);
+            }
         }
 
         internal DependencyScope(object tag, ResolverChain primaryChain, ResolverChain fallbackChain, RootDependencyResolver rootResolver)
@@ -70,6 +75,33 @@ namespace ChainGang.Resolution
             return scopeFactory(this, tag, resolver);
         }
 
+        public void AddResolver(IDependencyResolver resolver, bool includeInPrimary = false)
+        {
+            if (resolver == null)
+            {
+                throw new ArgumentNullException("resolver");
+            }
+
+            if (_isLocked)
+            {
+                throw new InvalidOperationException(Resources.DependencyScopeLockedMessage);
+            }
+
+            if (includeInPrimary)
+            {
+                _resolvers.First.Add(resolver);
+            }
+            else
+            {
+                _resolvers.Second.Add(resolver);
+            }
+        }
+
+        public void Lock()
+        {
+            _isLocked = true;
+        }
+
         public void Dispose()
         {
             Dispose(true);
@@ -89,15 +121,5 @@ namespace ChainGang.Resolution
                 }
             }
         }        
-    }
-
-    //public class ExtendableDependencyScope : DependencyScope
-    //{
-    //    private readonly CompositeResolver<ResolverChain, ResolverChain> _resolvers;
-
-    //    public void AddResolver(IDependencyResolver resolver, bool includeInPrimary = false)
-    //    {
-
-    //    }
-    //}
+    }    
 }

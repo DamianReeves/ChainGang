@@ -123,4 +123,7 @@
   <data name="DependencyNotFoundExceptionMessageFormat" xml:space="preserve">
     <value>Could not find the requested dependency. Dependency type was {0} and the dependency key was {1}.</value>
   </data>
+  <data name="DependencyScopeLockedMessage" xml:space="preserve">
+    <value>The scope is locked, and as such no new resolvers can be added to it.</value>
+  </data>
 </root>

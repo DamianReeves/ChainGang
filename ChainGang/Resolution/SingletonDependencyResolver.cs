@@ -30,4 +30,17 @@ namespace ChainGang.Resolution
                        : null;
         }
     }
+
+    public static class SingletonDependencyResolver
+    {
+        public static SingletonDependencyResolver<T> Create<T>(T instance) where T : class
+        {
+            return new SingletonDependencyResolver<T>(instance);
+        }
+
+        public static SingletonDependencyResolver<T> Create<T>(T instance, object key) where T : class
+        {
+            return new SingletonDependencyResolver<T>(instance, key);
+        }
+    }
 }

@@ -77,5 +77,14 @@ namespace ChainGang.Properties {
                 return ResourceManager.GetString("DependencyNotFoundExceptionMessageFormat", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The scope is locked, and as such no new resolvers can be added to it..
+        /// </summary>
+        internal static string DependencyScopeLockedMessage {
+            get {
+                return ResourceManager.GetString("DependencyScopeLockedMessage", resourceCulture);
+            }
+        }
     }
 }

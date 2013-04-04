@@ -28,6 +28,7 @@ namespace ChainGang.Resolution
             var primary = new ResolverChain();
             primary.Add(scopeSpecificResolver);
             var fallback = new ResolverChain();
+            fallback.Add(parentResolver);
             return new DependencyScope(primary, fallback);
         }
     }
