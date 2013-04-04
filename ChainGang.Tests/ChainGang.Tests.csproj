@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Internal\ImmutableStackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resolution\DependencyScopeTests.cs" />
     <Compile Include="Resolution\ResolverChainTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -34,17 +34,31 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Internal\Disposables\CompositeDisposable.cs" />
+    <Compile Include="Internal\Disposables\ICancelable .cs" />
     <Compile Include="Internal\ImmutableStack.cs" />
     <Compile Include="Internal\ImmutableStackOfT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resolution\CompositeResolver.cs" />
+    <Compile Include="Resolution\DependencyNotFoundException.cs" />
+    <Compile Include="Resolution\DependencyScope.cs" />
     <Compile Include="Resolution\FactoryDelegates.cs" />
     <Compile Include="Resolution\IDependencyResolver.cs" />
     <Compile Include="Resolution\IDependencyResolverExtensions.cs" />
     <Compile Include="Resolution\IDependencyScope.cs" />
     <Compile Include="Resolution\IDependencyScopeExtensions.cs" />
+    <Compile Include="Resolution\IExtendableDependencyScope.cs" />
     <Compile Include="Resolution\LazyDependencyResolver.cs" />
     <Compile Include="Resolution\ResolverChain.cs" />
     <Compile Include="Resolution\RootDependencyResolver.cs" />
